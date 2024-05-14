@@ -1,0 +1,13 @@
+    @font-face {
+    font-family: 'Spaced Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Spaced Regular'), url('../components/Spaced OTF.woff') format('woff');
+    }
+
+    h1 {
+        font-family: 'Spaced Regular';
+        font-weight: 200;
+        color: ;
+
+    }
