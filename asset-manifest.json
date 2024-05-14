@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Knights/static/css/main.2993f0fe.css",
+    "main.js": "/Knights/static/js/main.67c2f6f8.js",
+    "static/js/453.c0b1a3be.chunk.js": "/Knights/static/js/453.c0b1a3be.chunk.js",
+    "static/media/Spaced OTF.woff": "/Knights/static/media/Spaced OTF.c5ad25287a0f703c11d7.woff",
+    "index.html": "/Knights/index.html",
+    "main.2993f0fe.css.map": "/Knights/static/css/main.2993f0fe.css.map",
+    "main.67c2f6f8.js.map": "/Knights/static/js/main.67c2f6f8.js.map",
+    "453.c0b1a3be.chunk.js.map": "/Knights/static/js/453.c0b1a3be.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2993f0fe.css",
+    "static/js/main.67c2f6f8.js"
+  ]
+}
