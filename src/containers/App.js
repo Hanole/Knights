@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import CardList from '../components/CardList';
 import SearchBox from '../components/SearchBox';
 import Scroll from '../components/scroll';
@@ -6,44 +6,41 @@ import ErrorBoundry from '../components/ErrorBoundry';
 import './App.css';
 
 
-class App extends Component {
-	constructor() {
-		super()
-		this.state = {
-			knights: [],
-			searchfield: ''
-		}
-	}
+ function App() {
 
-componentDidMount() {
-	fetch('https://jsonplaceholder.typicode.com/users')
+ 	const [knights, setKnights] = useState([])
+ 	const [searchfield, setSearchfield] = useState('')
+ 	const [count, setCount] = useState(0)
+
+ 	useEffect(()=> {
+ 		fetch('https://jsonplaceholder.typicode.com/users')
 		.then(response=> response.json())	
-		.then(users => this.setState({ knights: users }));
+		.then(users => {setKnights(users)});
+		console.log(count)
+ 	},[count]) // <-- only run if count changes
+
+	const onSearchChange = (event) => {	
+		setSearchfield(event.target.value)
 	}
 
-	onSearchChange = (event) => {	
-		this.setState({ searchfield: event.target.value })
-	}
 
-	render() {
-		const { knights, searchfield } = this.state;
-		const filteredKnights = knights.filter(knight =>{
-			return knight.name.toLowerCase().includes(searchfield.toLowerCase());
-		})
-		return !knights.length ? 
-			<h1>Loading</h1> :
-			(
-			<div className='tc'>		
-				<h1 className='f1'>Knights</h1>
-				<SearchBox searchChange={this.onSearchChange}/>
-				<Scroll>
-					<ErrorBoundry>
-		    			<CardList knights={filteredKnights} />
-		    		</ErrorBoundry>
-		    	</Scroll>
-			</div>
-			);
-		}
-	}
+	const filteredKnights = knights.filter(knight =>{
+		return knight.name.toLowerCase().includes(searchfield.toLowerCase());
+	})
+	return !knights.length ? 
+		<h1>Loading</h1> :
+		(
+		<div className='tc'>		
+			<h1 className='f1'>Knights</h1>
+			<button onClick={()=>setCount(count+1)}>Click Me!!</button>
+			<SearchBox searchChange={onSearchChange}/>
+			<Scroll>
+				<ErrorBoundry>
+	    			<CardList knights={filteredKnights} />
+	    		</ErrorBoundry>
+	    	</Scroll>
+		</div>
+		);
+}
 
 export default App;
